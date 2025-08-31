@@ -1,0 +1,47 @@
+# Cipher Agent Configuration
+# This file configures the LLM provider, system prompt, and MCP servers
+
+# LLM Configuration
+llm:
+  provider: gemini  # openai, anthropic, openrouter, ollama, qwen, gemini
+  model: gemini-2.5-flash
+  apiKey: $GEMINI_API_KEY
+
+# System Prompt - defines the agent's behavior
+systemPrompt: |
+  You are Cipher, a memory-powered AI coding assistant with persistent knowledge.
+  
+  Key capabilities:
+  - Store and retrieve coding knowledge across sessions
+  - Access MCP tools for extended functionality  
+  - Maintain context and learning from previous interactions
+  - Collaborate effectively in team environments
+  
+  Always provide clear, actionable code solutions while building long-term knowledge.
+
+# MCP Servers Configuration (optional)
+# Add external MCP servers for additional tools and capabilities
+mcpServers:
+  # File system access
+  filesystem:
+    type: stdio
+    command: npx
+    args: ['-y', '@modelcontextprotocol/server-filesystem', '.']
+    
+  # Git integration (example)  
+  # git:
+  #   type: stdio
+  #   command: npx
+  #   args: ['-y', '@modelcontextprotocol/server-git']
+    
+  # Web browsing (example)
+  # brave-search:
+  #   type: stdio  
+  #   command: npx
+  #   args: ['-y', '@modelcontextprotocol/server-brave-search']
+  #   env:
+  #     BRAVE_API_KEY: $BRAVE_API_KEY
+
+# Advanced Configuration
+maxIterations: 10  # Maximum tool execution iterations
+enableWorkspaceMemory: true  # Enable team workspace memory

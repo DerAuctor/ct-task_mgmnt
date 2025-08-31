@@ -333,6 +333,22 @@ footer {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* LLM Provider Auswahl Styling */
+#llm-provider {
+  margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 4px;
+  outline: none;
+}
+
+#llm-provider:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
 /* 進度指示器樣式 */
 /* Progress indicator styles */
 .progress-indicator {
