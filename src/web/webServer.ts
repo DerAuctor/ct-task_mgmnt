@@ -10,7 +10,11 @@ import {
   getWebGuiFilePath,
 } from "../utils/paths.js";
 
-export async function createWebServer() {
+export async function createWebServer(): Promise<{
+  app: any;
+  sendSseUpdate: () => void;
+  startServer: () => Promise<any>;
+}> {
   // 創建 Express 應用
   // Create Express application
   const app = express();
