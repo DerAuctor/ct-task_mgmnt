@@ -3,7 +3,7 @@
  * Based on the Anubis implementation but simplified for this task manager
  */
 
-import { LLMProvider, LLMOptions, LLMResponse } from './types';
+import { LLMProvider, LLMOptions, LLMResponse } from './types.js';
 
 // OpenRouter API Configuration
 const OPENROUTER_API_BASE = "https://openrouter.ai/api/v1";
@@ -107,7 +107,7 @@ export class OpenRouterProvider implements LLMProvider {
         model: modelId,
       };
     } catch (error) {
-      throw new Error(`Failed to generate completion: ${error.message}`);
+      throw new Error(`Failed to generate completion: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 

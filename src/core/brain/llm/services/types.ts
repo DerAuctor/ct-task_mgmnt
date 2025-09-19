@@ -8,6 +8,7 @@ export interface LLMOptions {
   topP?: number;
   frequencyPenalty?: number;
   presencePenalty?: number;
+  model?: string;
 }
 
 export interface LLMResponse {

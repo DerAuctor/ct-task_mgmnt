@@ -3,7 +3,7 @@
  * Based on the Anubis implementation but simplified for this task manager
  */
 
-import { LLMProvider, LLMOptions, LLMResponse } from './types';
+import { LLMProvider, LLMOptions, LLMResponse } from './types.js';
 
 // OAuth2 Configuration (from Anubis implementation)
 const OAUTH_CLIENT_ID = "681255809395-oo8ft2oprdrnp9e3aqf6av3hmdib135j.apps.googleusercontent.com";
@@ -48,7 +48,7 @@ export class GeminiProvider implements LLMProvider {
         throw new Error(`OAuth credentials file not found: ${OAUTH_CREDS_PATH}`);
       }
     } catch (error) {
-      throw new Error(`Failed to initialize Gemini provider: ${error.message}`);
+      throw new Error(`Failed to initialize Gemini provider: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
@@ -106,7 +106,7 @@ export class GeminiProvider implements LLMProvider {
         model: this.name,
       };
     } catch (error) {
-      throw new Error(`Failed to generate completion: ${error.message}`);
+      throw new Error(`Failed to generate completion: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
 
